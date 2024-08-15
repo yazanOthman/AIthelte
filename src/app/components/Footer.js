@@ -8,7 +8,7 @@ export default function Footer() {
         <p className="text-gray-400">
           &copy; 2024 AIthlete. All rights reserved.
         </p>
-        <Link href="/">
+        <Link href="https://github.com/yazanOthman/AIthelte">
           <FaGithub size={22} />
         </Link>
       </div>
