@@ -4,9 +4,11 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Footer from "./components/Footer";
 import botLogo from "../../public/botlogo.png";
+import { useAuth } from "@clerk/clerk-react";
 
 export default function Home() {
   const router = useRouter();
+  const { isSignedIn } = useAuth();
 
   const handleSignIn = () => {
     router.push("/sign-in");
@@ -14,6 +16,9 @@ export default function Home() {
 
   const handleSignUp = () => {
     router.push("/sign-up");
+  };
+  const navigateToChat = () => {
+    router.push("/chat");
   };
   return (
     <>
@@ -36,22 +41,30 @@ export default function Home() {
             AIthlete&apos;s intelligent, goal-driven approach
           </p>
         </div>
-        <div className="flex space-x-4">
+        {!isSignedIn ? (
+          <div className="flex space-x-4">
+            <button
+              onClick={handleSignIn}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+            >
+              Sign In
+            </button>
+            <button
+              onClick={handleSignUp}
+              className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            >
+              Sign Up
+            </button>
+          </div>
+        ) : (
           <button
-            onClick={handleSignIn}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+            className="bg-blue-500 text-white py-3 px-6 text-lg rounded-full shadow-lg hover:bg-blue-600 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+            onClick={navigateToChat}
           >
-            Sign In
+            Chat with AIthlete
           </button>
-          <button
-            onClick={handleSignUp}
-            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-          >
-            Sign Up
-          </button>
-        </div>
+        )}
       </div>
-      <Footer></Footer>
     </>
   );
 }
