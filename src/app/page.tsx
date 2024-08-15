@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-
 import Image from "next/image";
 import Footer from "./components/Footer";
+import botLogo from "../../public/botlogo.png";
 
 export default function Home() {
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function Home() {
       <div className="w-full h-screen flex flex-col items-center justify-center bg-black-100">
         <div className="flex flex-col items-center mb-8">
           <Image
-            src={"/botLogo.png"}
+            src={botLogo}
             alt="GitBot Logo"
             width={200}
             height={200}
