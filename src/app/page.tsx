@@ -51,7 +51,7 @@ export default function Home() {
             </button>
             <button
               onClick={handleSignUp}
-              className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              className="bg-white hover:bg-gray-100 text-gray-800 font-bold rounded-full py-2 px-4 border border-gray-400 rounded shadow hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
             >
               Sign Up
             </button>
