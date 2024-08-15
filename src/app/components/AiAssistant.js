@@ -18,11 +18,10 @@ export default function AIAssistant() {
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
+    if (chatContainerRef.current && isTyping) {
+      chatContainerRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages]);
+  }, [messages, isTyping]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,16 +79,14 @@ export default function AIAssistant() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div
-            ref={chatContainerRef}
-            className="h-[400px] overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800"
-          >
+          <div className="h-[400px] overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
             <AnimatePresence>
               {messages.map((msg, index) => (
                 <Message key={index} message={msg} />
               ))}
               {isTyping && <TypingIndicator />}
             </AnimatePresence>
+            <div ref={chatContainerRef} />
           </div>
           <form
             onSubmit={handleSubmit}
