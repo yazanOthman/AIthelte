@@ -29,7 +29,7 @@ export default function Home() {
             alt="GitBot Logo"
             width={200}
             height={200}
-            className="mb-4"
+            className="w-56 h-56 rounded-full object-cover border-4 border-gray-200 shadow-lg transition-transform transform hover:scale-105"
           />
           <h1 className="text-5xl font-bold text-white mb-4">
             Welcome to AIthlete
